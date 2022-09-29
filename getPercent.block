@@ -1,0 +1,52 @@
+<template 
+	color="#de3900" 
+	inline="true"
+	output="String Number Array"	
+	>
+
+	<dummy>
+        <label>Get Precent /</label>
+    </dummy>
+
+    <dummy>
+        <label>Value</label>
+    </dummy>
+    <value name="num" type="Number"></value>
+
+	<dummy>
+        <label>Total Value</label>
+    </dummy>
+    <value name="total" type="Number"></value>   
+
+    <dummy>
+    	<checkbox name="showPrecent">TRUE</checkbox>
+        <label>%</label>
+    </dummy>
+
+</template>
+
+
+<script>
+
+
+function code(block) {
+
+	const num = Blockly.JavaScript.valueToCode(block, 'num', Blockly.JavaScript.ORDER_NONE);
+	const total = Blockly.JavaScript.valueToCode(block, 'total', Blockly.JavaScript.ORDER_NONE);	
+	const showPrecent = block.getFieldValue('showPrecent') === 'TRUE';
+
+    const fun = Plug.provide('getPrecent', function(num,total,showPrecent) {
+
+
+    	if(showPrecent){
+    		return total <= 0 ? "0%" : (Math.round(num / total * 10000) / 100.00)+"%";	    		
+    	}else{
+    		return total <= 0 ? "0" : (Math.round(num / total * 10000) / 100.00);	
+    	}
+
+    });
+
+    return [`${fun}(${num},${total},${showPrecent})`, Blockly.JavaScript.ORDER_ATOMIC];
+	
+}
+</script>
