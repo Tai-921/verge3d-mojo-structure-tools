@@ -1,0 +1,22 @@
+<xml id="mojo-devTools">
+ <category name="Mojo-Structure" color="gray">
+        <sep gap="3"></sep>
+        <label text="Mojo-Structure plugin v1.0"></label>
+        <sep gap="3"></sep>
+        <label text="Get Percent:"></label>
+        <sep gap="1"></sep>        
+        <block type="getPercent">
+            <value name="num">
+                <shadow type="math_number">
+                    <field name="NUM">10</field>
+                </shadow>
+            </value>
+            <value name="total">
+                <shadow type="math_number">
+                    <field name="NUM">100</field>
+                </shadow>
+            </value>            
+            <block type="checkboxField"></block>
+        </block>
+    </category>
+  </xml> 
